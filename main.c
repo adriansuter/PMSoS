@@ -8,19 +8,26 @@
 
 /** \brief Calculate arithmetic progressions via Pythagorean triples.
  *
+ * To avoid the initialization of mpz_t variables within the function, you have
+ * to pass initialized mpz_t variables via parameters that then can be used
+ * by the function.
+ *
+ * Note that the middle value of any arithmetic progression found would be
+ * (p1 * p2)^2.
+ *
  * \param arithmeticProgressions mpz_ap_list_t** The list of arithmetic progressions.
  * \param p1 mpz_t The first factor.
  * \param p2 mpz_t The second factor.
- * \param m mpz_t An mpz number that can be used by the function.
- * \param n mpz_t An mpz number that can be used by the function.
- * \param mSquared mpz_t An mpz number that can be used by the function.
- * \param nSquared mpz_t An mpz number that can be used by the function.
- * \param x1 mpz_t An mpz number that can be used by the function.
- * \param x2 mpz_t An mpz number that can be used by the function.
- * \param x3 mpz_t An mpz number that can be used by the function.
- * \param a1 mpz_t An mpz number that can be used by the function.
- * \param a2 mpz_t An mpz number that can be used by the function.
- * \param a3 mpz_t An mpz number that can be used by the function.
+ * \param m mpz_t An mpz_t variable that can be used by the function.
+ * \param n mpz_t An mpz_t variable that can be used by the function.
+ * \param mSquared mpz_t An mpz_t variable that can be used by the function.
+ * \param nSquared mpz_t An mpz_t variable that can be used by the function.
+ * \param x1 mpz_t An mpz_t variable that can be used by the function.
+ * \param x2 mpz_t An mpz_t variable that can be used by the function.
+ * \param x3 mpz_t An mpz_t variable that can be used by the function.
+ * \param a1 mpz_t An mpz_t variable that can be used by the function.
+ * \param a2 mpz_t An mpz_t variable that can be used by the function.
+ * \param a3 mpz_t An mpz_t variable that can be used by the function.
  * \return void
  */
 void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, mpz_t n, mpz_t mSquared, mpz_t nSquared, mpz_t x1, mpz_t x2, mpz_t x3, mpz_t a1, mpz_t a2, mpz_t a3)
@@ -33,25 +40,35 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
     // n = 1
     mpz_set_ui(n, 1);
 
+    // mSquared = m^2
     mpz_pow_ui(mSquared, m, 2);
+
+    // nSquared = n^2
     mpz_pow_ui(nSquared, n, 2);
+
     while ( mpz_cmp(m, n) > 0 )
     {
         // x3 = m^2 + n^2
         mpz_add(x3, mSquared, nSquared);
 
         cmp = mpz_cmp(x3, p1);
-        if ( cmp < 0 )
+        if ( cmp < 0 )// if ( x3 < p1 )
         {
+            // n = n + 1
             mpz_add_ui(n, n, 1);
+
+            // nSquared = n^2
             mpz_pow_ui(nSquared, n, 2);
         }
-        else if ( cmp > 0 )
+        else if ( cmp > 0 )// if ( x3 > p1 )
         {
+            // m = m - 1
             mpz_sub_ui(m, m, 1);
+
+            // mSquared = m^2
             mpz_pow_ui(mSquared, m, 2);
         }
-        else
+        else// if ( x3 == p1 )
         {
             // x1 = m^2 - n^2
             mpz_sub(x1, mSquared, nSquared);
@@ -60,25 +77,29 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
             mpz_mul(x2, m, n);
             mpz_mul_ui(x2, x2, 2);
 
-            // Scale by p2
+            // Scale x1, x2 and x3 by p2.
             mpz_mul(x1, x1, p2);
             mpz_mul(x2, x2, p2);
             mpz_mul(x3, x3, p2);
 
-            // (x2 - x1)^2
+            // a1 = (x2 - x1)^2
             mpz_sub(a1, x2, x1);
             mpz_pow_ui(a1, a1, 2);
 
-            // x3^2
+            // a2 = x3^2
             mpz_pow_ui(a2, x3, 2);
 
-            // (x1 + x2)^2
+            // a3 = (x1 + x2)^2
             mpz_add(a3, x1, x2);
             mpz_pow_ui(a3, a3, 2);
 
+            // Insert the arithmetic progression [a1, a2, a3] into the list.
             mpz_ap_list_insert(arithmeticProgressions, a1, a2, a3);
 
+            // m = m - 1
             mpz_sub_ui(m, m, 1);
+
+            // mSquared = m^2
             mpz_pow_ui(mSquared, m, 2);
         }
     }
@@ -103,6 +124,7 @@ int main(int argc, char **argv)
     mpz_init(numberSqrt);
     mpz_init(f1);
     mpz_init(f2);
+
     mpz_init(m);
     mpz_init(n);
     mpz_init(mSquared);
@@ -133,20 +155,21 @@ int main(int argc, char **argv)
     int plusMinus = 1;
     int read;
     int strlength = 0;
+    long result;
     char buf[BUFSIZ];
 
     while ( 1 )
     {
-        //
         // Read from the input.
-        //
         read = 1;
         while ( read == 1 )
         {
             fgets(buf, sizeof buf, stdin);
-            strlength = 0;
 
-            while (buf[strlength] != '\0') {
+            // Measure the input string length.
+            strlength = 0;
+            while (buf[strlength] != '\0')
+            {
                 strlength++;
             }
 
@@ -154,22 +177,27 @@ int main(int argc, char **argv)
             {
                 if ( buf[0] == 'q' )
                 {
+                    // Quit command read > so exit.
                     exit(0);
                 }
                 else
                 {
                     if ( buf[strlength - 2] == '+' )
                     {
+                        // The given command ends by a '+'.
                         plusMinus = 1;
                         buf[strlength - 2] = '\n';
                     }
                     else if ( buf[strlength - 2] == '-' )
                     {
+                        // The given command ends by a '-'.
                         plusMinus = -1;
                         buf[strlength - 2] = '\n';
                     }
                     else
                     {
+                        // The given command does not end by '+' nor by '-'.
+                        // In this case we default to '+'.
                         plusMinus = 1;
                     }
 
@@ -266,7 +294,7 @@ int main(int argc, char **argv)
 #endif
 
 
-        long result = 0;
+        result = 0;
 
         /// ///
         /// Iterate through all combinations of arithmetic progressions AP1 and AP2
@@ -297,9 +325,15 @@ int main(int argc, char **argv)
                 printf(")");
 #endif
 
+                // a = "arithmetic progression distance of AP1"
                 mpz_set(a, AP1->d);
+
+                // b = "arithmetic progression distance of AP2"
                 mpz_set(b, AP2->d);
+
+                // c = "middle square number of AP1"
                 mpz_set(c, AP1->y);
+
 
                 // a2 = 2 * a
                 mpz_mul_ui(a2, a, 2);
@@ -325,6 +359,13 @@ int main(int argc, char **argv)
 
                 // e = a - b
                 mpz_sub(e, a, b);
+
+
+                ///
+                /// Now we can actually calculate the nine numbers of the
+                /// magic square and then check whether or not they are perfect
+                /// square numbers.
+                ///
 
                 // s1 = c - b [x1]
                 mpz_set(x1, AP2->x);
@@ -423,6 +464,10 @@ int main(int argc, char **argv)
                     }
                 }
 
+                // s1, s3, s5, s7 and s9 are perfect square numbers (by construction).
+                // Therefore we would have at least 5 perfect square numbers.
+                // Calculate the total number of perfect square numbers in our
+                // magic square.
                 int nrPerfectSquares = 5
                                        + s2PerfectSquare
                                        + s4PerfectSquare
@@ -431,6 +476,11 @@ int main(int argc, char **argv)
 
                 if ( nrPerfectSquares > 6 )
                 {
+                    /// ///
+                    /// We have found a magic square of more than 6 perfect
+                    /// square numbers. So write that down to disk.
+                    /// We would also write the filename to the stdout.
+                    /// ///
                     FILE *fp;
                     char filename[100];
                     char generator[80];
@@ -473,7 +523,7 @@ int main(int argc, char **argv)
                 }
 
                 /// ///
-                /// Check if d and e are distances in any arithmetic progression.
+                /// Check if d and e are distances in any other arithmetic progression.
                 /// ///
                 int dFound = 0;
                 int eFound = 0;
@@ -495,9 +545,9 @@ int main(int argc, char **argv)
 
                 if ( dFound > 0 && eFound > 0 )
                 {
-                    // /
-                    // HEUREKA
-                    // /
+                    /// ///
+                    /// HEUREKA
+                    /// ///
                     FILE *fp;
                     char filename[100];
                     char generator[80];
@@ -540,9 +590,9 @@ int main(int argc, char **argv)
                 }
                 else if ( dFound > 0 )
                 {
-                    // /
-                    // SEMI-HEUREKA 1
-                    // /
+                    /// ///
+                    /// SEMI-HEUREKA 1
+                    /// ///
                     FILE *fp;
                     char filename[100];
                     char generator[80];
@@ -585,9 +635,9 @@ int main(int argc, char **argv)
                 }
                 else if ( eFound > 0 )
                 {
-                    // /
-                    // SEMI-HEUREKA 2
-                    // /
+                    /// ///
+                    /// SEMI-HEUREKA 2
+                    /// ///
                     FILE *fp;
                     char filename[100];
                     char generator[80];
@@ -645,7 +695,6 @@ int main(int argc, char **argv)
         printf("_\n");
         fflush(stdout);
     }
-
 
     return 0;
 }
