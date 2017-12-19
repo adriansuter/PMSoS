@@ -2,302 +2,27 @@
 #include <stdlib.h>
 #include <gmp.h>
 
-
-/** \brief Linked list of factor pairs. */
-typedef struct mpz_factor_list
-{
-    /** \brief The first factor. */
-    mpz_t factor1;
-    /** \brief The second factor. */
-    mpz_t factor2;
-    /** \brief Pointer to the next item. */
-    struct mpz_factor_list * next;
-} mpz_factor_list_t;
+#include "mpz_factor_list.h"
+#include "mpz_ap_list.h"
 
 
-/** \brief Pushes a new factor pair into the given list.
+/** \brief Calculate arithmetic progressions via Pythagorean triples.
  *
- * The passed parameters \p factor1 and \p factor2 can safely be cleared after
- * calling the function as the function creates new ones internally.
- *
- * A new factor pair would be pushed to the beginning of the list.
- *
- * \param list mpz_factor_list_t** The list.
- * \param factor1 mpz_t The first factor.
- * \param factor2 mpz_t The second factor.
+ * \param arithmeticProgressions mpz_ap_list_t** The list of arithmetic progressions.
+ * \param p1 mpz_t The first factor.
+ * \param p2 mpz_t The second factor.
+ * \param m mpz_t An mpz number that can be used by the function.
+ * \param n mpz_t An mpz number that can be used by the function.
+ * \param mSquared mpz_t An mpz number that can be used by the function.
+ * \param nSquared mpz_t An mpz number that can be used by the function.
+ * \param x1 mpz_t An mpz number that can be used by the function.
+ * \param x2 mpz_t An mpz number that can be used by the function.
+ * \param x3 mpz_t An mpz number that can be used by the function.
+ * \param a1 mpz_t An mpz number that can be used by the function.
+ * \param a2 mpz_t An mpz number that can be used by the function.
+ * \param a3 mpz_t An mpz number that can be used by the function.
  * \return void
  */
-void mpz_factor_list_push(mpz_factor_list_t ** list, mpz_t factor1, mpz_t factor2)
-{
-    // Create a new node.
-    mpz_factor_list_t * newNode;
-    newNode = malloc(sizeof(mpz_factor_list_t));
-
-    // Set the factors of the node.
-    mpz_init_set(newNode->factor1, factor1);
-    mpz_init_set(newNode->factor2, factor2);
-
-    // Insert the new node as first element of the list.
-    newNode->next = *list;
-    *list = newNode;
-}
-
-
-/** \brief Pops the first factor pair from the given list.
- *
- * The function would remove the first factor pair and release all memory used
- * by that element.
- *
- * \param list mpz_factor_list_t** The list.
- * \return void
- *
- */
-void mpz_factor_list_pop(mpz_factor_list_t ** list)
-{
-    if (*list == NULL)
-    {
-        return;
-    }
-
-    mpz_clear((*list)->factor1);
-    mpz_clear((*list)->factor2);
-
-    mpz_factor_list_t * nextNode = NULL;
-    nextNode = (*list)->next;
-
-    free(*list);
-    *list = nextNode;
-}
-
-
-/** \brief Cleans a given list.
- *
- * The function would clean the whole list and release all memory used by all
- * the elements previously in the list.
- *
- * \param list mpz_factor_list_t** The list.
- * \return void
- *
- */
-void mpz_factor_list_clean(mpz_factor_list_t ** list)
-{
-    while ( *list != NULL )
-    {
-        mpz_factor_list_pop(list);
-    }
-}
-
-
-/** \brief Prints the given list of factor pairs to the stdout.
- *
- * \param list mpz_factor_list_t* The list.
- * \return void
- */
-void mpz_factor_list_print(mpz_factor_list_t * list)
-{
-    mpz_factor_list_t * current = list;
-
-    while (current != NULL)
-    {
-        mpz_out_str(stdout, 10, current->factor1);
-        printf(" x ");
-        mpz_out_str(stdout, 10, current->factor2);
-        printf("\n");
-
-        current = current->next;
-    }
-}
-
-
-/** \brief Linked list of arithmetic progressions. */
-typedef struct mpz_ap_list
-{
-    /** \brief The small square number. */
-    mpz_t x;
-    /** \brief The middle square number. */
-    mpz_t y;
-    /** \brief The big square number. */
-    mpz_t z;
-    /** \brief The distance between the middle square and the small square number. */
-    mpz_t d;
-    /** \brief The pointer to the next item. */
-    struct mpz_ap_list * next;
-} mpz_ap_list_t;
-
-
-/** \brief Inserts a new arithmetic progression into the given list at the
- * correct position.
- *
- * This function would not insert if there is already the same arithmetic
- * progression in the list. The list would always be ordered ascending by
- * distance, that is by \p y - \p x = \p z - \p y = \p d. Note that it is your
- * duty to make sure that \p x < \p y < \p z and that \p y - \p x = \p z -
- * \p y. The function would not check for that.
- *
- * The passed parameters \p x, \p y and \p z can be cleared after calling this
- * function as the function would create new ones internally.
- *
- * \param list mpz_ap_list_t** The list.
- * \param x mpz_t The small square number.
- * \param y mpz_t The middle square number.
- * \param z mpz_t The big square number.
- * \return void
- */
-void mpz_ap_list_insert(mpz_ap_list_t ** list, mpz_t x, mpz_t y, mpz_t z)
-{
-    // Calculate the distance d = y - x.
-    mpz_t d;
-    mpz_init(d);
-    mpz_sub(d, y, x);
-
-    mpz_ap_list_t * current = * list;
-    if ( current == NULL || mpz_cmp(d, current->d) < 0 )
-    {
-        // Either this is the first element or the existing first element has
-        // a bigger distance. We have to insert the new element as first
-        // element.
-        mpz_ap_list_t * newNode;
-        newNode = malloc(sizeof(mpz_ap_list_t));
-
-        // Set the values.
-        mpz_init_set(newNode->x, x);
-        mpz_init_set(newNode->y, y);
-        mpz_init_set(newNode->z, z);
-        mpz_init_set(newNode->d, d);
-
-        // Insert the new node as first element into the list.
-        newNode->next = *list;
-        *list = newNode;
-
-        // Clear d and return.
-        mpz_clear(d);
-        return;
-    }
-
-    // Iterate through the list and search for the element that has a bigger d.
-    // If found we will insert a new element before the found one. If not we
-    // will append a new element to the list.
-    while (current != NULL)
-    {
-        if ( mpz_cmp(x, current->x) == 0 )
-        {
-            // If there is already an element with the same x, then we can
-            // assume that this arithmetic progression exists already. Therefore
-            // we would not change anything.
-            break;
-        }
-
-        if ( current->next == NULL )
-        {
-            // We have reached the end of the list. Therefore we have to append
-            // this arithmetic progression to the end of the list.
-            mpz_ap_list_t * newNode;
-            newNode = malloc(sizeof(mpz_ap_list_t));
-
-            // Set the values.
-            mpz_init_set(newNode->x, x);
-            mpz_init_set(newNode->y, y);
-            mpz_init_set(newNode->z, z);
-            mpz_init_set(newNode->d, d);
-
-            // Append the new node as last element to the list.
-            newNode->next = NULL;
-            current->next = newNode;
-            break;
-        }
-
-        if ( current->next != NULL )
-        {
-            if ( mpz_cmp(x, current->next->x) == 0 )
-            {
-                // If there is already an element with the same x, then we can
-                // assume that this arithmetic progression exists already.
-                // Therefore we would not change anything.
-                break;
-            }
-
-            if ( mpz_cmp(current->next->d, d) >= 0 )
-            {
-                // The next element in the list has a bigger distance. Therefore
-                // we will insert the new arithmetic progression right after
-                // the current one but before the next one.
-                mpz_ap_list_t * newNode;
-                newNode = malloc(sizeof(mpz_ap_list_t));
-
-                // Set the values.
-                mpz_init_set(newNode->x, x);
-                mpz_init_set(newNode->y, y);
-                mpz_init_set(newNode->z, z);
-                mpz_init_set(newNode->d, d);
-
-                // Insert the new node between the current and the next one in
-                // the list.
-                newNode->next = current->next;
-                current->next = newNode;
-                break;
-            }
-        }
-
-        current = current->next;
-    }
-
-    // Clear d.
-    mpz_clear(d);
-}
-
-
-void mpz_ap_list_pop(mpz_ap_list_t ** list)
-{
-    if (*list == NULL)
-    {
-        return;
-    }
-
-    mpz_clear((*list)->x);
-    mpz_clear((*list)->y);
-    mpz_clear((*list)->z);
-    mpz_clear((*list)->d);
-
-    mpz_ap_list_t * nextNode = NULL;
-    nextNode = (*list)->next;
-
-    free(*list);
-    *list = nextNode;
-}
-
-
-void mpz_ap_list_clean(mpz_ap_list_t ** list)
-{
-    while ( *list != NULL )
-    {
-        mpz_ap_list_pop(list);
-    }
-}
-
-
-void mpz_ap_list_print(mpz_ap_list_t * list)
-{
-    mpz_ap_list_t * current = list;
-
-    while (current != NULL)
-    {
-        mpz_out_str(stdout, 10, current->x);
-        printf(", ");
-        mpz_out_str(stdout, 10, current->y);
-        printf(", ");
-        mpz_out_str(stdout, 10, current->z);
-        printf(" | ");
-        mpz_out_str(stdout, 10, current->d);
-        printf("\n");
-
-        current = current->next;
-    }
-}
-
-
-///
-/// Calculate arithmetic progressions via Pythagorean triples.
-///
 void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, mpz_t n, mpz_t mSquared, mpz_t nSquared, mpz_t x1, mpz_t x2, mpz_t x3, mpz_t a1, mpz_t a2, mpz_t a3)
 {
     int cmp;
@@ -357,10 +82,16 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
             mpz_pow_ui(mSquared, m, 2);
         }
     }
-
 }
 
-int main()
+
+/** \brief The main function.
+ *
+ * \param argc int Number of command line arguments given.
+ * \param argv char** Array of command line arguments given.
+ * \return int
+ */
+int main(int argc, char **argv)
 {
     mpz_t input, number, numberSquared, numberSqrt, f1, f2;
     mpz_t m, n, mSquared, nSquared, x1, x2, x3, a1, a2, a3, a7, a8, a9;

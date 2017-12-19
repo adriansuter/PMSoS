@@ -23,7 +23,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PMSoS
    </div>
-   <div id="projectbrief">Parallel Magic Square of Squares</div>
   </td>
  </tr>
  </tbody>
@@ -60,8 +59,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">main.c File Reference</div>  </div>
@@ -70,86 +67,18 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;gmp.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="mpz__factor__list_8h_source.html">mpz_factor_list.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mpz__ap__list_8h_source.html">mpz_ap_list.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpz__factor__list.html">mpz_factor_list</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linked list of factor pairs.  <a href="structmpz__factor__list.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpz__ap__list.html">mpz_ap_list</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linked list of arithmetic progressions.  <a href="structmpz__ap__list.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ad541e2130b332ea0fccf554a580b4cb4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmpz__factor__list.html">mpz_factor_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a></td></tr>
-<tr class="memdesc:ad541e2130b332ea0fccf554a580b4cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linked list of factor pairs.  <a href="#ad541e2130b332ea0fccf554a580b4cb4">More...</a><br /></td></tr>
-<tr class="separator:ad541e2130b332ea0fccf554a580b4cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3408347bc166807b1d0fa96e020fce30"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmpz__ap__list.html">mpz_ap_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a></td></tr>
-<tr class="memdesc:a3408347bc166807b1d0fa96e020fce30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linked list of arithmetic progressions.  <a href="#a3408347bc166807b1d0fa96e020fce30">More...</a><br /></td></tr>
-<tr class="separator:a3408347bc166807b1d0fa96e020fce30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0324958a92638ccd34ab1d97e94bc8ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0324958a92638ccd34ab1d97e94bc8ab">mpz_factor_list_push</a> (<a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> **list, mpz_t factor1, mpz_t factor2)</td></tr>
-<tr class="memdesc:a0324958a92638ccd34ab1d97e94bc8ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes a new factor pair into the given list.  <a href="#a0324958a92638ccd34ab1d97e94bc8ab">More...</a><br /></td></tr>
-<tr class="separator:a0324958a92638ccd34ab1d97e94bc8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9145ae0cb93f3eef1d67b04f9644f3f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a9145ae0cb93f3eef1d67b04f9644f3f1">mpz_factor_list_pop</a> (<a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> **list)</td></tr>
-<tr class="memdesc:a9145ae0cb93f3eef1d67b04f9644f3f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the first factor pair from the given list.  <a href="#a9145ae0cb93f3eef1d67b04f9644f3f1">More...</a><br /></td></tr>
-<tr class="separator:a9145ae0cb93f3eef1d67b04f9644f3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1179e56130bd5b526a817142b8b71eb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1179e56130bd5b526a817142b8b71eb3">mpz_factor_list_clean</a> (<a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> **list)</td></tr>
-<tr class="memdesc:a1179e56130bd5b526a817142b8b71eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans a given list.  <a href="#a1179e56130bd5b526a817142b8b71eb3">More...</a><br /></td></tr>
-<tr class="separator:a1179e56130bd5b526a817142b8b71eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addc7f2f0e8e6dbf0ad0f7f8b6640253b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#addc7f2f0e8e6dbf0ad0f7f8b6640253b">mpz_factor_list_print</a> (<a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> *list)</td></tr>
-<tr class="memdesc:addc7f2f0e8e6dbf0ad0f7f8b6640253b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the given list of factor pairs to the stdout.  <a href="#addc7f2f0e8e6dbf0ad0f7f8b6640253b">More...</a><br /></td></tr>
-<tr class="separator:addc7f2f0e8e6dbf0ad0f7f8b6640253b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8053a56e79c2fb4526ae755da17a1a1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a8053a56e79c2fb4526ae755da17a1a1a">mpz_ap_list_insert</a> (<a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **list, mpz_t x, mpz_t y, mpz_t z)</td></tr>
-<tr class="memdesc:a8053a56e79c2fb4526ae755da17a1a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a new arithmetic progression into the given list at the correct position.  <a href="#a8053a56e79c2fb4526ae755da17a1a1a">More...</a><br /></td></tr>
-<tr class="separator:a8053a56e79c2fb4526ae755da17a1a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0452c0991101ebc5c1a1be331d31e9b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0452c0991101ebc5c1a1be331d31e9b5">mpz_ap_list_pop</a> (<a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **list)</td></tr>
-<tr class="separator:a0452c0991101ebc5c1a1be331d31e9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f356f67b55c42316a6b8166761adf37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4f356f67b55c42316a6b8166761adf37">mpz_ap_list_clean</a> (<a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **list)</td></tr>
-<tr class="separator:a4f356f67b55c42316a6b8166761adf37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab517885374b4f29e36e4c6491ac85498"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ab517885374b4f29e36e4c6491ac85498">mpz_ap_list_print</a> (<a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> *list)</td></tr>
-<tr class="separator:ab517885374b4f29e36e4c6491ac85498"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a284106200684cb4e443c95211db7075f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a284106200684cb4e443c95211db7075f">calc</a> (<a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, mpz_t n, mpz_t mSquared, mpz_t nSquared, mpz_t x1, mpz_t x2, mpz_t x3, mpz_t a1, mpz_t a2, mpz_t a3)</td></tr>
+<tr class="memitem:a284106200684cb4e443c95211db7075f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a284106200684cb4e443c95211db7075f">calc</a> (<a class="el" href="mpz__ap__list_8h.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, mpz_t n, mpz_t mSquared, mpz_t nSquared, mpz_t x1, mpz_t x2, mpz_t x3, mpz_t a1, mpz_t a2, mpz_t a3)</td></tr>
+<tr class="memdesc:a284106200684cb4e443c95211db7075f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate arithmetic progressions via Pythagorean triples.  <a href="#a284106200684cb4e443c95211db7075f">More...</a><br /></td></tr>
 <tr class="separator:a284106200684cb4e443c95211db7075f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main function.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br /></td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a3408347bc166807b1d0fa96e020fce30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3408347bc166807b1d0fa96e020fce30">&#9670;&nbsp;</a></span>mpz_ap_list_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structmpz__ap__list.html">mpz_ap_list</a>  <a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Linked list of arithmetic progressions. </p>
-
-</div>
-</div>
-<a id="ad541e2130b332ea0fccf554a580b4cb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad541e2130b332ea0fccf554a580b4cb4">&#9670;&nbsp;</a></span>mpz_factor_list_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structmpz__factor__list.html">mpz_factor_list</a>  <a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Linked list of factor pairs. </p>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a284106200684cb4e443c95211db7075f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a284106200684cb4e443c95211db7075f">&#9670;&nbsp;</a></span>calc()</h2>
@@ -160,7 +89,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void calc </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="mpz__ap__list_8h.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **&#160;</td>
           <td class="paramname"><em>arithmeticProgressions</em>, </td>
         </tr>
         <tr>
@@ -242,12 +171,32 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Calculate arithmetic progressions via Pythagorean triples. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arithmeticProgressions</td><td>mpz_ap_list_t** The list of arithmetic progressions. </td></tr>
+    <tr><td class="paramname">p1</td><td>mpz_t The first factor. </td></tr>
+    <tr><td class="paramname">p2</td><td>mpz_t The second factor. </td></tr>
+    <tr><td class="paramname">m</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">n</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">mSquared</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">nSquared</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">x1</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">x2</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">x3</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">a1</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">a2</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">a3</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
-<a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,254 +204,37 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int main </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The main function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>int Number of command line arguments given. </td></tr>
+    <tr><td class="paramname">argv</td><td>char** Array of command line arguments given. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 <p>/// Get a list of all possible factor pairs f1, f2 such that f1*f2 = number. Note that f1 and f2 may be equal, i.e. f1^2 = number. The algorithm used here is very simple - actually some sort of brute force. We know that it would be better to first find the prime factors and then to calculate all possible combinations of the found prime factors. But the simple approach is still quite speedy :-). ///</p>
 <p>/// Iterate over all factor pairs and calculate the Arithmetic Progressions via Pythagorean Triples. ///</p>
 <p>/// Iterate through all combinations of arithmetic progressions AP1 and AP2 with the condition that the distance of AP1 (call it a) is smaller than the distance of AP2 (call it b). Further we get the middle square number of AP1 (which is the same as the middle square number of AP2) and call it c.</p>
 <p>If b == 2a then we can continue with the next combination. Otherwise we will calculate d = a + b and e = a - b. If d &gt;= c or e &gt;= c we can continue with the next combination, as then d - e or c - e would be negative. ///</p>
 <p>/// Check if d and e are distances in any arithmetic progression. /// </p>
-
-</div>
-</div>
-<a id="a4f356f67b55c42316a6b8166761adf37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f356f67b55c42316a6b8166761adf37">&#9670;&nbsp;</a></span>mpz_ap_list_clean()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_ap_list_clean </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8053a56e79c2fb4526ae755da17a1a1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8053a56e79c2fb4526ae755da17a1a1a">&#9670;&nbsp;</a></span>mpz_ap_list_insert()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_ap_list_insert </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mpz_t&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mpz_t&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mpz_t&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Inserts a new arithmetic progression into the given list at the correct position. </p>
-<p>This function would not insert if there is already the same arithmetic progression in the list. The list would always be ordered ascending by distance, that is by <code>y</code> - <code>x</code> = <code>z</code> - <code>y</code> = <code>d</code>. Note that it is your duty to make sure that <code>x</code> &lt; <code>y</code> &lt; <code>z</code> and that <code>y</code> - <code>x</code> = <code>z</code> - <code>y</code>. The function would not check for that.</p>
-<p>The passed parameters <code>x</code>, <code>y</code> and <code>z</code> can be cleared after calling this function as the function would create new ones internally.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">list</td><td>mpz_ap_list_t** The list. </td></tr>
-    <tr><td class="paramname">x</td><td>mpz_t The small square number. </td></tr>
-    <tr><td class="paramname">y</td><td>mpz_t The middle square number. </td></tr>
-    <tr><td class="paramname">z</td><td>mpz_t The big square number. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="a0452c0991101ebc5c1a1be331d31e9b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0452c0991101ebc5c1a1be331d31e9b5">&#9670;&nbsp;</a></span>mpz_ap_list_pop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_ap_list_pop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> **&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab517885374b4f29e36e4c6491ac85498"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab517885374b4f29e36e4c6491ac85498">&#9670;&nbsp;</a></span>mpz_ap_list_print()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_ap_list_print </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#a3408347bc166807b1d0fa96e020fce30">mpz_ap_list_t</a> *&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1179e56130bd5b526a817142b8b71eb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1179e56130bd5b526a817142b8b71eb3">&#9670;&nbsp;</a></span>mpz_factor_list_clean()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_factor_list_clean </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> **&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Cleans a given list. </p>
-<p>The function would clean the whole list and release all memory used by all the elements previously in the list.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">list</td><td>mpz_factor_list_t** The list. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="a9145ae0cb93f3eef1d67b04f9644f3f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9145ae0cb93f3eef1d67b04f9644f3f1">&#9670;&nbsp;</a></span>mpz_factor_list_pop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_factor_list_pop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> **&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pops the first factor pair from the given list. </p>
-<p>The function would remove the first factor pair and release all memory used by that element.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">list</td><td>mpz_factor_list_t** The list. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="addc7f2f0e8e6dbf0ad0f7f8b6640253b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addc7f2f0e8e6dbf0ad0f7f8b6640253b">&#9670;&nbsp;</a></span>mpz_factor_list_print()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_factor_list_print </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> *&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints the given list of factor pairs to the stdout. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">list</td><td>mpz_factor_list_t* The list. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="a0324958a92638ccd34ab1d97e94bc8ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0324958a92638ccd34ab1d97e94bc8ab">&#9670;&nbsp;</a></span>mpz_factor_list_push()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mpz_factor_list_push </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="main_8c.html#ad541e2130b332ea0fccf554a580b4cb4">mpz_factor_list_t</a> **&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mpz_t&#160;</td>
-          <td class="paramname"><em>factor1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mpz_t&#160;</td>
-          <td class="paramname"><em>factor2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pushes a new factor pair into the given list. </p>
-<p>The passed parameters <code>factor1</code> and <code>factor2</code> can safely be cleared after calling the function as the function creates new ones internally.</p>
-<p>A new factor pair would be pushed to the beginning of the list.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">list</td><td>mpz_factor_list_t** The list. </td></tr>
-    <tr><td class="paramname">factor1</td><td>mpz_t The first factor. </td></tr>
-    <tr><td class="paramname">factor2</td><td>mpz_t The second factor. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
