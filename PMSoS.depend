@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1513670602 source:c:\users\adrian\owncloud\privat\maths\codeblocks\pmsos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<gmp.h>
+
