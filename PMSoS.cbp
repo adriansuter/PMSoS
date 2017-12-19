@@ -34,6 +34,14 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mpz_ap_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mpz_ap_list.h" />
+		<Unit filename="mpz_factor_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mpz_factor_list.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
