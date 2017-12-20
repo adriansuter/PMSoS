@@ -1,0 +1,98 @@
+\documentclass[reqno,10pt,a4paper]{article}
+\usepackage{geometry}
+\geometry{a4paper, portrait, left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{wasysym}
+\usepackage{tikz}
+
+\usepackage{siunitx}
+\sisetup{group-separator = \text{\,}}
+\sisetup{group-minimum-digits = 3}
+
+% Opening
+\title{Magic Square of Perfect Squares}
+\author{Adrian Suter}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{The maths behind it}
+	
+	Each component $s_i$, $i = 1, 2, 3, \ldots, 9$ of the magic square has to be a perfect square number. Say $s_i = n_i^2$ for $n \in \mathbb{Z}$. From \cite{zimmermann2015} we know that the components need to be such that
+	
+	\begin{equation} \label{eq:conditionMod24}
+		n_i^2 \equiv 1~(\textrm{mod}~24)
+	\end{equation}
+	
+	Looking at the smallest perfect square numbers and their modulo 24 (see table \ref{perfectSquares}) we can see some sort of a pattern every 12-th integer. Indeed, as
+	\begin{equation}
+	(x + 12)^2 \mod 24 = (x^2 + 24x + 144) \mod 24
+	\end{equation}
+	for any integer $x$ and as
+	\begin{equation}
+	(24x + 144) \mod 24 = 0
+	\end{equation}
+	we can see that
+	\begin{equation}
+	x^2 \mod 24 = (x + 12)^2 \mod 24
+	\end{equation}
+	
+	\begin{table}
+			\begin{tabular}{|c|c|c||c|c|c|}
+			\hline
+			$x$ & $x^2$ & $x^2 \mod 24$ & $x$ & $x^2$ & $x^2 \mod 24$ \\
+			\hline
+			0 & 0 & 0 & 12 & 144 & 0 \\
+			1 & 1 & 1 & 13 & 169 & 1 \\
+			2 & 4 & 4 & 14 & 196 & 4 \\
+			3 & 9 & 9 & 15 & 225 & 9 \\
+			4 & 16 & 16 & 16 & 256 & 16 \\
+			5 & 25 & 1 & 17 & 289 & 1 \\
+			6 & 36 & 12 & 18 & 324 & 12 \\
+			7 & 49 & 1 & 19 & 361 & 1 \\
+			8 & 64 & 16 & 20 & 400 & 16 \\
+			9 & 81 & 9 & 21 & 441 & 9 \\
+			10 & 100 & 4 & 22 & 484 & 4 \\
+			11 & 121 & 1 & 23 & 529 & 1 \\
+			\hline
+		\end{tabular}
+		\caption{Some perfect square numbers and their modulo 24.} \label{perfectSquares}
+	\end{table}
+	
+	For $x \in [0, 11]$ there are exactly four perfect squares fulfilling the condition \eqref{eq:conditionMod24}. Therefore we can build four infinite series $\mathbb{S}_j$, $j = 1, 2, 3, 4$ for which all members fulfill the condition. Let there be $t$ any integer, then
+	\begin{eqnarray}
+		\mathbb{S}_1 &=& 1 + 12 t = \left\{ 1, 13, 25, \ldots \right\} \\
+		\mathbb{S}_2 &=& 5 + 12 t = \left\{ 5, 17, 29, \ldots \right\} \\
+		\mathbb{S}_3 &=& 7 + 12 t = \left\{ 7, 19, 31, \ldots \right\} \\
+		\mathbb{S}_4 &=& 11 + 12 t = \left\{ 11, 23, 35, \ldots \right\}
+	\end{eqnarray}
+	
+	The members of these for sets are all and the only perfect square numbers that fulfill the condition \eqref{eq:conditionMod24}.
+	
+	
+	\section{The generator functions}
+	
+	The above four series can be generated using two generator functions $f_+(g)$ and $f_-(g)$ for any integer $g$.
+	
+	\begin{eqnarray}
+		f_+ &=& 6 \cdot g + 1 \label{eq:generatorFunctionPlus} \\
+		f_- &=& 6 \cdot g - 1 \label{eq:generatorFunctionMinus}
+	\end{eqnarray}
+	
+	
+	\section{Program usage}
+	
+	Todo
+	
+	%%
+	\bibliographystyle{plain}
+	\bibliography{Library}
+
+\end{document}
