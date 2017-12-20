@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.11.11)  20 DEC 2017 11:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.11.11)  20 DEC 2017 17:07
 entering extended mode
 **./Documentation.tex
 (Documentation.tex
@@ -924,6 +924,17 @@ File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 [1
 
 {C:/Users/Adrian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Missing character: There is no § in font cmtt10!
+Missing character: There is no § in font cmr10!
+Missing character: There is no § in font cmtt10!
+Missing character: There is no § in font cmr10!
+Missing character: There is no § in font cmtt10!
+Missing character: There is no § in font cmr10!
+Missing character: There is no § in font cmtt10!
+Missing character: There is no § in font cmr10!
+Missing character: There is no § in font cmtt10!
+Missing character: There is no § in font cmr10!
+
 (Documentation.bbl) [2] (Documentation.aux) ) 
 Here is how much of TeX's memory you used:
  22553 strings out of 493334
@@ -939,14 +950,16 @@ ublic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb>
-Output written on Documentation.pdf (2 pages, 115878 bytes).
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbo
+ls/msbm10.pfb>
+Output written on Documentation.pdf (2 pages, 138388 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
+ 64 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -25,7 +25,7 @@
 	
 	\section{The maths behind it}
 	
-	Each component $s_i$, $i = 1, 2, 3, \ldots, 9$ of the magic square has to be a perfect square number. Say $s_i = n_i^2$ for $n \in \mathbb{Z}$. From \cite{zimmermann2015} we know that the components need to be such that
+	Each component $s_i$, $i = 1, 2, 3, \ldots, 9$ of the magic square has to be a perfect square number. Say $s_i = n_i^2$ for $n_i \in \mathbb{Z}$. From \cite{zimmermann2015} we know that the components need to be such that
 	
 	\begin{equation} \label{eq:conditionMod24}
 		n_i^2 \equiv 1~(\textrm{mod}~24)
@@ -74,7 +74,7 @@
 		\mathbb{S}_4 &=& 11 + 12 t = \left\{ 11, 23, 35, \ldots \right\}
 	\end{eqnarray}
 	
-	The members of these for sets are all and the only perfect square numbers that fulfill the condition \eqref{eq:conditionMod24}.
+	The square numbers of the members of all four sets are the only perfect square numbers that fulfill the condition \eqref{eq:conditionMod24}. There are no others.
 	
 	
 	\section{The generator functions}
@@ -86,10 +86,22 @@
 		f_- &=& 6 \cdot g - 1 \label{eq:generatorFunctionMinus}
 	\end{eqnarray}
 	
+	We will call $g$ the generator number.
+	
 	
 	\section{Program usage}
 	
-	Todo
+	Once the program had been launched, it waits to receive on the standard input a generator string. The generator string consists of a generator number $g$ followed optionally by a \verb§+§ (default) or \verb§-§ character. By hitting enter, the program would start calculating the magic squares for the given generator string and at the end it would print a dash \verb§-§ to the standard output. As soon as this happened, the program is ready for the next generator string. If any valid or almost\footnote{More than six perfect square numbers} valid magic square had been detected, the program would write a file containing the most important information to the disk and prints the filename to the standard output.
+	
+	
+	\section{Program flow}
+	
+	The last character of the generator string defines the generator function to be applied. Either it ends by \verb§-§, then the function \eqref{eq:generatorFunctionMinus} would be used or it ends by \verb§+§ (default), then the function \eqref{eq:generatorFunctionPlus} would be applied.
+	
+	Let $r$ be the calculated number. From now on we assume that the center magic square number is $s_5 = r^2$, therefore $n_5 = r$.
+	
+	To be continued...
+	
 	
 	%%
 	\bibliographystyle{plain}
