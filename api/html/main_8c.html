@@ -173,21 +173,23 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculate arithmetic progressions via Pythagorean triples. </p>
+<p>To avoid the initialization of mpz_t variables within the function, you have to pass initialized mpz_t variables via parameters that then can be used by the function.</p>
+<p>Note that the middle value of any arithmetic progression found would be (p1 * p2)^2.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">arithmeticProgressions</td><td>mpz_ap_list_t** The list of arithmetic progressions. </td></tr>
     <tr><td class="paramname">p1</td><td>mpz_t The first factor. </td></tr>
     <tr><td class="paramname">p2</td><td>mpz_t The second factor. </td></tr>
-    <tr><td class="paramname">m</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">n</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">mSquared</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">nSquared</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">x1</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">x2</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">x3</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">a1</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">a2</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
-    <tr><td class="paramname">a3</td><td>mpz_t An mpz number that can be used by the function. </td></tr>
+    <tr><td class="paramname">m</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">n</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">mSquared</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">nSquared</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">x1</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">x2</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">x3</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">a1</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">a2</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
+    <tr><td class="paramname">a3</td><td>mpz_t An mpz_t variable that can be used by the function. </td></tr>
   </table>
   </dd>
 </dl>
@@ -234,7 +236,12 @@ Functions</h2></td></tr>
 <p>/// Iterate over all factor pairs and calculate the Arithmetic Progressions via Pythagorean Triples. ///</p>
 <p>/// Iterate through all combinations of arithmetic progressions AP1 and AP2 with the condition that the distance of AP1 (call it a) is smaller than the distance of AP2 (call it b). Further we get the middle square number of AP1 (which is the same as the middle square number of AP2) and call it c.</p>
 <p>If b == 2a then we can continue with the next combination. Otherwise we will calculate d = a + b and e = a - b. If d &gt;= c or e &gt;= c we can continue with the next combination, as then d - e or c - e would be negative. ///</p>
-<p>/// Check if d and e are distances in any arithmetic progression. /// </p>
+<p>Now we can actually calculate the nine numbers of the magic square and then check whether or not they are perfect square numbers.</p>
+<p>/// We have found a magic square of more than 6 perfect square numbers. So write that down to disk. We would also write the filename to the stdout. ///</p>
+<p>/// Check if d and e are distances in any other arithmetic progression. ///</p>
+<p>/// HEUREKA ///</p>
+<p>/// SEMI-HEUREKA 1 ///</p>
+<p>/// SEMI-HEUREKA 2 /// </p>
 
 </div>
 </div>
