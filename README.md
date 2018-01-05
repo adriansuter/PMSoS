@@ -6,4 +6,4 @@ The IDE is Code::Blocks (http://www.codeblocks.org/). The source code requires t
 Multiple Precision Arithmetic Library (https://gmplib.org/).
 
 ## Usage, description and maths
-The documentation can be found at https://github.com/adriansuter/PMSoS/documenation/Documentation.pdf .
+The documentation can be found at https://github.com/adriansuter/PMSoS/blob/master/documenation/Documentation.pdf.
