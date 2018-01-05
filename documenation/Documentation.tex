@@ -42,7 +42,7 @@
 \end{mdframed}}
 
 % Opening
-\title{The quest for 3 \time 3 magic squares of perfect square numbers}
+\title{The quest for $3 \times 3$ magic squares of perfect square numbers}
 \author{Adrian Suter}
 
 
@@ -50,9 +50,83 @@
 	
 	\maketitle
 	
-	\section{The maths behind it}
+	\section{Introduction}
+		
+	A $3 \times 3$ magic square is defined as a square matrix of size $3$
 	
-	Each component $s_i$, $i = 1, 2, 3, \ldots, 9$ of the magic square has to be a perfect square number. Say $s_i = n_i^2$ for $n_i \in \mathbb{Z}$. From \cite{zimmermann2015} we know that the components need to be such that
+	\begin{equation}
+		\mathbf{S} = 
+		\begin{pmatrix}
+		s_1 & s_2 & s_3 \\
+		s_4 & s_5 & s_6 \\
+		s_7 & s_8 & s_9
+		\end{pmatrix}
+	\end{equation}
+	where the components $s_i$, $i = 1, 2, 3, \ldots, 9$ are distinct positive integers and the sum of the integers in each row, column and diagonal is equal. We call that sum \emph{magic sum} $S$. Hence
+	\begin{eqnarray}
+		S &=& s_1 + s_2 + s_3 = s_4 + s_5 + s_6 = s_7 + s_8 + s_9 \\
+		S &=& s_1 + s_4 + s_7 = s_2 + s_5 + s_8 = s_3 + s_6 + s_9 \\
+		S &=& s_1 + s_5 + s_9 = s_3 + s_5 + s_7
+	\end{eqnarray}
+	
+		
+	In order to have a $3 \times 3$ magic square of perfect square numbers, each component $s_i$, $i = 1, 2, 3, \ldots, 9$ of the magic square $\mathbf{S}$ has to be a perfect square number. Say $s_i = n_i^2$ for $n_i \in \mathbb{Z}$. So
+	
+	\begingroup
+	\renewcommand*{\arraystretch}{1.5}
+	\begin{equation}
+		\mathbf{S} = 
+		\begin{pmatrix}
+			n_1^2 & n_2^2 & n_3^2 \\
+			n_4^2 & n_5^2 & n_6^2 \\
+			n_7^2 & n_8^2 & n_9^2
+		\end{pmatrix}
+	\end{equation}
+	\endgroup	
+	
+	
+	The french mathematician \'{E}douard Lucas showed (CITE) that all $3 \times 3$ magic squares could be written in the following form.
+	
+	\begin{equation}
+	\mathbf{S} = 
+	\begin{pmatrix}
+	c - b & c + (a + b) & c - a \\
+	c - (a - b) & c & c + (a - b) \\
+	c + a & c - (a + b) & c + b
+	\end{pmatrix}
+	\end{equation}
+	for positive integers $a$, $b$ and $c$ with $0 < a < b < c - a$ and $b \neq 2a$.
+	
+	Let
+	\begin{equation}
+		d = a + b \text{ and } e = a - b \text{.}
+	\end{equation}
+	
+	Therefore
+	\begin{eqnarray}
+		s_1 = n_1^2 &=& c - b \\
+		s_2 = n_2^2 &=& c + d \\
+		s_3 = n_3^2 &=& c - a \\
+		s_4 = n_4^2 &=& c - e \\
+		s_5 = n_5^2 &=& c \\
+		s_6 = n_6^2 &=& c + e \\
+		s_7 = n_7^2 &=& c + a \\
+		s_8 = n_8^2 &=& c - d \\
+		s_9 = n_9^2 &=& c + b
+	\end{eqnarray}
+	
+	So we would actually search four arithmetic progressions around $c$
+	\begin{eqnarray}
+		\mathbb{P}_c(a) &=& \left\{ c - a, c, c + a \right\} = \left\{ n_3^2, n_5^2, n_7^2 \right\} \\
+		\mathbb{P}_c(b) &=& \left\{ c - b, c, c + b \right\} = \left\{ n_1^2, n_5^2, n_9^2 \right\} \\
+		\mathbb{P}_c(d) &=& \left\{ c - d, c, c + d \right\} = \left\{ n_8^2, n_5^2, n_2^2 \right\} \\
+		\mathbb{P}_c(e) &=& \left\{ c - e, c, c + e \right\} = \left\{ n_4^2, n_5^2, n_6^2 \right\}
+	\end{eqnarray}
+	for which $d = a + b$ and $e = a - b$.
+
+	\vspace{1em}
+	
+	From \cite{zimmermann2015} we know that the components need to be such that
 	
 	\begin{equation} \label{eq:conditionMod24}
 		n_i^2 \equiv 1~(\textrm{mod}~24)
