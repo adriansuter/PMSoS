@@ -31,6 +31,12 @@
 # Debug files
 *.dSYM/
 
+# Log files
+*.log
+
+# Depend files
+*.depend
+
 # =========================
 # Operating System Files
 # =========================

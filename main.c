@@ -101,6 +101,12 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
 
             // mSquared = m^2
             mpz_pow_ui(mSquared, m, 2);
+
+            // n = n + 1
+            mpz_add_ui(n, n, 1);
+
+            // nSquared = n^2
+            mpz_pow_ui(nSquared, n, 2);
         }
     }
 }

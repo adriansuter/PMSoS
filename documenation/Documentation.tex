@@ -9,13 +9,40 @@
 \usepackage{latexsym}
 \usepackage{wasysym}
 \usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
 
 \usepackage{siunitx}
 \sisetup{group-separator = \text{\,}}
 \sisetup{group-minimum-digits = 3}
 
+\newenvironment{example}[2][]{%
+\ifstrempty{#1}%
+% if condition (without title)
+{\mdfsetup{%
+		frametitle={%
+			\tikz[baseline=(current bounding box.east),outer sep=0pt]
+			\node[anchor=east,rectangle,fill=blue!10]
+			{\strut Example};}%
+	}%
+	% else condition (with title)
+}{\mdfsetup{%
+		frametitle={%
+			\tikz[baseline=(current bounding box.east),outer sep=0pt]
+			\node[anchor=east,rectangle,fill=blue!10]
+			{\strut Example:~#1};}%
+	}%
+}%
+% Both conditions
+\mdfsetup{%
+	innertopmargin=4pt,linecolor=blue!10,%
+	linewidth=2pt,topline=true,%
+	frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+}	
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
 % Opening
-\title{Magic Square of Perfect Squares}
+\title{The quest for 3 \time 3 magic squares of perfect square numbers}
 \author{Adrian Suter}
 
 
@@ -82,8 +109,8 @@
 	The above four series can be generated using two generator functions $f_+(g)$ and $f_-(g)$ for any integer $g$.
 	
 	\begin{eqnarray}
-		f_+ &=& 6 \cdot g + 1 \label{eq:generatorFunctionPlus} \\
-		f_- &=& 6 \cdot g - 1 \label{eq:generatorFunctionMinus}
+		f_+(g) &=& 6 \cdot g + 1 \label{eq:generatorFunctionPlus} \\
+		f_-(g) &=& 6 \cdot g - 1 \label{eq:generatorFunctionMinus}
 	\end{eqnarray}
 	
 	We will call $g$ the generator number.
@@ -98,9 +125,109 @@
 	
 	The last character of the generator string defines the generator function to be applied. Either it ends by \verb§-§, then the function \eqref{eq:generatorFunctionMinus} would be used or it ends by \verb§+§ (default), then the function \eqref{eq:generatorFunctionPlus} would be applied.
 	
-	Let $r$ be the calculated number. From now on we assume that the center magic square number is $s_5 = r^2$, therefore $n_5 = r$.
+	Let $n_5$ be this calculated number. Therefore the center cell of our magic square would become
+	\begin{equation}
+		s_5 = n_5^2
+	\end{equation}
+
+	In the program we would store $n_5$ in the variable \verb§number§ and $s_5$ in \verb§numberSquared§.
 	
+	\begin{example}{}
+		Let the generator string be \verb§"141-"§. That means our program would calculate
+		\begin{equation*}
+			n_5 = f_-(141) = 6 \cdot 141 - 1 = \num{845}
+		\end{equation*}
+		and
+		\begin{equation*}
+			s_5 = \num{845}^2 = \num{714025} \text{.}
+		\end{equation*}
+	\end{example}
+	
+	Next we calculate all factor pairs for $n_5$, that is we build the set of factor pairs
+	\begin{equation}
+		\mathbb{P} = \left\{ (p_1, q_1), (p_2, q_2), \ldots, (p_K, q_K) \right\}
+	\end{equation}
+	where $K = |\mathbb{P}|$ and where
+	\begin{equation}
+		p_k \cdot q_k = n_5 ~\forall~ k \in [1, K] \subset \mathbb{Z} \text{.}
+	\end{equation}
+	
+	\begin{example}{1}
+		The set of factor pairs for our example would be
+		\begin{equation}
+			\mathbb{P} = \left\{ (13, 65), (5, 169), (1, 845) \right\}
+		\end{equation}
+	\end{example}
+
 	To be continued...
+	
+	
+	\begin{example}{Debug Program Output}
+		\begin{verbatim}
+		> 141-
+		Input: 141, -1
+		Number: 845, Number^2: 714025
+		-- Factor Pairs --
+		13 x 65
+		5 x 169
+		1 x 845
+		-- Arithmetic Progressions --
+		519841, 714025, 908209 | 194184
+		508369, 714025, 919681 | 205656
+		373321, 714025, 1054729 | 340704
+		207025, 714025, 1221025 | 507000
+		89401, 714025, 1338649 | 624624
+		28561, 714025, 1399489 | 685464
+		25, 714025, 1428025 | 714000
+		-- Valid Combinations --
+		(194184, 205656)...
+		508369 1113865 519841
+		725497 714025 702553
+		908209 314185 919681
+		(194184, 340704)...
+		373321 1248913 519841
+		860545 714025 567505
+		908209 179137 1054729
+		(194184, 507000)...
+		207025 1415209 519841
+		1026841 714025 401209
+		908209 12841 1221025
+		(194184, 624624) Skip as a + b >= c
+		(194184, 685464) Skip as a + b >= c
+		(194184, 714000) Skip as a + b >= c
+		(205656, 340704)...
+		373321 1260385 508369
+		849073 714025 578977
+		919681 167665 1054729
+		(205656, 507000)...
+		207025 1426681 508369
+		1015369 714025 412681
+		919681 1369 1221025
+		ps,6,141M,1.result
+		(205656, 624624) Skip as a + b >= c
+		(205656, 685464) Skip as a + b >= c
+		(205656, 714000) Skip as a + b >= c
+		(340704, 507000) Skip as a + b >= c
+		(340704, 624624) Skip as a + b >= c
+		(340704, 685464) Skip as a + b >= c
+		(340704, 714000) Skip as a + b >= c
+		(507000, 624624) Skip as a + b >= c
+		(507000, 685464) Skip as a + b >= c
+		(507000, 714000) Skip as a + b >= c
+		(624624, 685464) Skip as a + b >= c
+		(624624, 714000) Skip as a + b >= c
+		(685464, 714000) Skip as a + b >= c
+		
+		Content of the file ps,6,141M,1.result
+		--------------------------------------
+		845
+		714025
+		1 0 1 | 0 1 0 | 1 1 1
+		207025 1426681 508369 | 1015369 714025 412681 | 919681 1369 1221025
+		\end{verbatim}
+	\end{example}
+
+	
 	
 	
 	%%
