@@ -41,10 +41,10 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
     mpz_set_ui(n, 1);
 
     // mSquared = m^2
-    mpz_pow_ui(mSquared, m, 2);
+    mpz_mul(mSquared, m, m);
 
     // nSquared = n^2
-    mpz_pow_ui(nSquared, n, 2);
+    mpz_mul(nSquared, n, n);
 
     while ( mpz_cmp(m, n) > 0 )
     {
@@ -58,7 +58,7 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
             mpz_add_ui(n, n, 1);
 
             // nSquared = n^2
-            mpz_pow_ui(nSquared, n, 2);
+            mpz_mul(nSquared, n, n);
         }
         else if ( cmp > 0 )// if ( x3 > p1 )
         {
@@ -66,7 +66,7 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
             mpz_sub_ui(m, m, 1);
 
             // mSquared = m^2
-            mpz_pow_ui(mSquared, m, 2);
+            mpz_mul(mSquared, m, m);
         }
         else// if ( x3 == p1 )
         {
@@ -84,14 +84,14 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
 
             // a1 = (x2 - x1)^2
             mpz_sub(a1, x2, x1);
-            mpz_pow_ui(a1, a1, 2);
+            mpz_mul(a1, a1, a1);
 
             // a2 = x3^2
-            mpz_pow_ui(a2, x3, 2);
+            mpz_mul(a2, x3, x3);
 
             // a3 = (x1 + x2)^2
             mpz_add(a3, x1, x2);
-            mpz_pow_ui(a3, a3, 2);
+            mpz_mul(a3, a3, a3);
 
             // Insert the arithmetic progression [a1, a2, a3] into the list.
             mpz_ap_list_insert(arithmeticProgressions, a1, a2, a3);
@@ -100,13 +100,13 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
             mpz_sub_ui(m, m, 1);
 
             // mSquared = m^2
-            mpz_pow_ui(mSquared, m, 2);
+            mpz_mul(mSquared, m, m);
 
             // n = n + 1
             mpz_add_ui(n, n, 1);
 
             // nSquared = n^2
-            mpz_pow_ui(nSquared, n, 2);
+            mpz_mul(nSquared, n, n);
         }
     }
 }
@@ -237,7 +237,7 @@ int main(int argc, char **argv)
         }
 
         // numberSquared = number^2
-        mpz_pow_ui(numberSquared, number, 2);
+        mpz_mul(numberSquared, number, number);
 
 #ifdef DEBUG
         printf("Input: ");
@@ -427,7 +427,7 @@ int main(int argc, char **argv)
                 {
                     // This seems to be a perfect square.
                     mpz_sqrt(m, x2);
-                    mpz_pow_ui(m, m, 2);
+                    mpz_mul(m, m, m);
                     if ( mpz_cmp(m, x2) == 0 )
                     {
                         s2PerfectSquare = 1;
@@ -439,7 +439,7 @@ int main(int argc, char **argv)
                 {
                     // This seems to be a perfect square.
                     mpz_sqrt(m, a1);
-                    mpz_pow_ui(m, m, 2);
+                    mpz_mul(m, m, m);
                     if ( mpz_cmp(m, a1) == 0 )
                     {
                         s4PerfectSquare = 1;
@@ -451,7 +451,7 @@ int main(int argc, char **argv)
                 {
                     // This seems to be a perfect square.
                     mpz_sqrt(m, a3);
-                    mpz_pow_ui(m, m, 2);
+                    mpz_mul(m, m, m);
                     if ( mpz_cmp(m, a3) == 0 )
                     {
                         s6PerfectSquare = 1;
@@ -463,7 +463,7 @@ int main(int argc, char **argv)
                 {
                     // This seems to be a perfect square.
                     mpz_sqrt(m, a8);
-                    mpz_pow_ui(m, m, 2);
+                    mpz_mul(m, m, m);
                     if ( mpz_cmp(m, a8) == 0 )
                     {
                         s8PerfectSquare = 1;
