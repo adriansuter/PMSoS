@@ -1,13 +1,12 @@
 #include "mpz_factor_list.h"
 
 
-/** \brief
+/** \brief Push a factor pair to the given list.
  *
- * \param list mpz_factor_list_t** The list
- * \param factor1 mpz_t
- * \param factor2 mpz_t
+ * \param list mpz_factor_list_t** The list.
+ * \param factor1 mpz_t The first factor.
+ * \param factor2 mpz_t The second factor.
  * \return void
- *
  */
 void mpz_factor_list_push(mpz_factor_list_t ** list, mpz_t factor1, mpz_t factor2)
 {
@@ -25,6 +24,11 @@ void mpz_factor_list_push(mpz_factor_list_t ** list, mpz_t factor1, mpz_t factor
 }
 
 
+/** \brief Pop the last factor pair from the list.
+ *
+ * \param list mpz_factor_list_t** The list.
+ * \return void
+ */
 void mpz_factor_list_pop(mpz_factor_list_t ** list)
 {
     if (*list == NULL)
@@ -43,6 +47,12 @@ void mpz_factor_list_pop(mpz_factor_list_t ** list)
 }
 
 
+/** \brief Clear the whole list.
+ *
+ * \param list mpz_factor_list_t** The list.
+ * \return void
+ *
+ */
 void mpz_factor_list_clean(mpz_factor_list_t ** list)
 {
     while ( *list != NULL )
@@ -52,6 +62,12 @@ void mpz_factor_list_clean(mpz_factor_list_t ** list)
 }
 
 
+/** \brief Print the contents of the list to the output.
+ *
+ * \param list mpz_factor_list_t* The list.
+ * \return void
+ *
+ */
 void mpz_factor_list_print(mpz_factor_list_t * list)
 {
     mpz_factor_list_t * current = list;
