@@ -1,6 +1,14 @@
 #include "mpz_factor_list.h"
 
 
+/** \brief
+ *
+ * \param list mpz_factor_list_t** The list
+ * \param factor1 mpz_t
+ * \param factor2 mpz_t
+ * \return void
+ *
+ */
 void mpz_factor_list_push(mpz_factor_list_t ** list, mpz_t factor1, mpz_t factor2)
 {
     // Create a new node.

@@ -16,18 +16,18 @@
  * (p1 * p2)^2.
  *
  * \param arithmeticProgressions mpz_ap_list_t** The list of arithmetic progressions.
- * \param p1 mpz_t       The first factor.
- * \param p2 mpz_t       The second factor.
- * \param m mpz_t        An mpz_t variable that can be used by the function.
- * \param n mpz_t        An mpz_t variable that can be used by the function.
+ * \param p1 mpz_t The first factor.
+ * \param p2 mpz_t The second factor.
+ * \param m mpz_t An mpz_t variable that can be used by the function.
+ * \param n mpz_t An mpz_t variable that can be used by the function.
  * \param mSquared mpz_t An mpz_t variable that can be used by the function.
  * \param nSquared mpz_t An mpz_t variable that can be used by the function.
- * \param x1 mpz_t       An mpz_t variable that can be used by the function.
- * \param x2 mpz_t       An mpz_t variable that can be used by the function.
- * \param x3 mpz_t       An mpz_t variable that can be used by the function.
- * \param a1 mpz_t       An mpz_t variable that can be used by the function.
- * \param a2 mpz_t       An mpz_t variable that can be used by the function.
- * \param a3 mpz_t       An mpz_t variable that can be used by the function.
+ * \param x1 mpz_t An mpz_t variable that can be used by the function.
+ * \param x2 mpz_t An mpz_t variable that can be used by the function.
+ * \param x3 mpz_t An mpz_t variable that can be used by the function.
+ * \param a1 mpz_t An mpz_t variable that can be used by the function.
+ * \param a2 mpz_t An mpz_t variable that can be used by the function.
+ * \param a3 mpz_t An mpz_t variable that can be used by the function.
  * \return void
  */
 void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, mpz_t n, mpz_t mSquared, mpz_t nSquared, mpz_t x1, mpz_t x2, mpz_t x3, mpz_t a1, mpz_t a2, mpz_t a3)
@@ -114,7 +114,7 @@ void calc(mpz_ap_list_t ** arithmeticProgressions, mpz_t p1, mpz_t p2, mpz_t m, 
 
 /** \brief The main function.
  *
- * \param argc int    Number of command line arguments given.
+ * \param argc int Number of command line arguments given.
  * \param argv char** Array of command line arguments given.
  * \return int
  */
